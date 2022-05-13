@@ -1,6 +1,7 @@
 // React and RR imports
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { Grid } from "@material-ui/core";
 
 // external libraries
 import { v4 as uuidv4 } from 'uuid';
@@ -33,10 +34,14 @@ const Listado = () => {
         {!token && <Navigate replace to="/" />}
         <h2>Soy el componente listado</h2>
         <ul>
-        {movieList.map((movie => {
-            return <MovieCard key={uuidv4()} movie={movie} />
+            <Grid container spacing={4} justify={'center'}>
+                <>
+                    {movieList.map((movie => {
+                        return <Grid item xs={12} sm={6} md={4} lg={3} ><MovieCard key={uuidv4()} movie={movie} /></Grid>
 
-        }))}
+                    }))}
+                </>
+            </Grid>
         </ul>
     </>
 }
