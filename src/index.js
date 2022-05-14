@@ -7,6 +7,7 @@ import Listado from './components/Listado';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
+import Detalle from './components/Detalle';
 import ResponsiveAppBar from './components/Header';
 
 const rootElement = document.getElementById("root");
@@ -18,6 +19,9 @@ render(
     </Routes>
     <Routes>
       <Route path="/listado" element={<Listado />} />
+    </Routes>
+    <Routes>
+      <Route path="/detalle/:id" element={<Detalle />} />
     </Routes>
     <Footer />
   </BrowserRouter>, rootElement);

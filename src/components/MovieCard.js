@@ -17,7 +17,9 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import "../css/MovieCard.css"
 import CardActionArea from '@mui/material/CardActionArea';
-import {Grid} from "@material-ui/core";
+
+import {Link} from "react-router-dom";
+
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -31,7 +33,6 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function MovieCard({ movie }) {
-    console.log(movie);
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -41,9 +42,10 @@ export default function MovieCard({ movie }) {
     return (
         <Card sx={{ maxWidth: 345 }} className="MovieCard" variant="outlined">
             <CardActionArea>
+                <Link to={`/detalle/${movie.id}`}>
                 <CardHeader
                     avatar={
-                        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                        <Avatar sx={{ bgcolor: red[500], color: 'black' }} aria-label="recipe">
                             {movie.original_title[0]}
                         </Avatar>
                     }
@@ -54,6 +56,7 @@ export default function MovieCard({ movie }) {
                     }
                     title={movie.original_title}
                     subheader={movie.release_date}
+                    sx={{ color: 'black'}}
                 />
                 <CardMedia
                     component="img"
@@ -61,6 +64,7 @@ export default function MovieCard({ movie }) {
                     image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                     alt="movie image"
                 />
+                </Link>
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
                         {movie.overview}

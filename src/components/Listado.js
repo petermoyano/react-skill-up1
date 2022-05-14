@@ -7,6 +7,7 @@ import { Grid } from "@material-ui/core";
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 
+
 //components
 import MovieCard from "./MovieCard"
 
@@ -26,18 +27,14 @@ const Listado = () => {
         fetchData();
     }, [setMovieList])
 
-
-
-
-
     return <>
         {!token && <Navigate replace to="/" />}
         <h2>Soy el componente listado</h2>
         <ul>
-            <Grid container spacing={4} justify={'center'}>
+            <Grid container spacing={4} justifyContent={'center'}>
                 <>
                     {movieList.map((movie => {
-                        return <Grid item xs={12} sm={6} md={4} lg={3} ><MovieCard key={uuidv4()} movie={movie} /></Grid>
+                        return <Grid item xs={12} sm={6} md={4} lg={3} key={uuidv4()}><MovieCard key={uuidv4()} movie={movie} /></Grid>
 
                     }))}
                 </>

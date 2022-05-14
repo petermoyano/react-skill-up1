@@ -1,3 +1,5 @@
 #MovieCard{
     display: inline-block;
+    color: silver;
+    background-color: blueviolet;
 }
