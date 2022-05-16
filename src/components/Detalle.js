@@ -1,28 +1,37 @@
-import React, {useEffect, useState} from "react";
-import {useParams, Navigate} from "react-router-dom";
-import DetailMovieCard from "./DetailMovieCard";
+import React, { useEffect, useState } from "react";
+import { useParams, Navigate} from "react-router-dom";
 import axios from 'axios';
+import swal from "@sweetalert/with-react";
+import {API_KEY} from "../config"
+
+import DetailMovieCard from "./DetailMovieCard";
 
 
-function Detalle(){
-    const [movieData, setMovieData] = useState({})
+function Detalle() {
+    const [movieData, setMovieData] = useState(null);
     const token = localStorage.getItem('Alkemytoken');
-    const {id} = useParams();
-    const DETALLE_URL = `https://api.themoviedb.org/3/movie/${id}?api_key=4245f97181b9770be8a62c794e0c582e&language=en-US`	
 
-    useEffect(() =>{
-        async function fetchMovieData(){
-             const res = await axios.get(DETALLE_URL);
-             setMovieData(res)
-        }
-        fetchMovieData();
+    const { movieId } = useParams();
+    const DETALLE_URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
 
-        
-        	
-    }, [])
+    useEffect(() => {
+        function fetchMovieData(DETALLE_URL) {
+            axios.get(DETALLE_URL)
+                .then(res => {
+                    setMovieData(res.data)
+                    console.log(res.data)
+                })
+                .catch(e => 
+                    swal(<h2>Oops... It seams something went wrong. Please try again later.</h2>));
+
+                    
+            }
+            fetchMovieData(DETALLE_URL);
+        }, [DETALLE_URL])
+
     return <>
-    {!token && <Navigate replace to="/" />}
-    <DetailMovieCard movieDetails={movieData.data} />
+        {!token && <Navigate replace to="/"/>}
+        {movieData ? <DetailMovieCard movieData={movieData}/> : "Loading........."}
     </>
 }
 

@@ -9,20 +9,19 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
 import Detalle from './components/Detalle';
 import ResponsiveAppBar from './components/Header';
+import { Container } from '@mui/material';
 
 const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
   <ResponsiveAppBar />
+  <Container>
     <Routes>
       <Route path="/" element={<App />} />
-    </Routes>
-    <Routes>
       <Route path="/listado" element={<Listado />} />
+      <Route path="/detalle/:movieId" element={<Detalle />} />
     </Routes>
-    <Routes>
-      <Route path="/detalle/:id" element={<Detalle />} />
-    </Routes>
+    </Container>
     <Footer />
   </BrowserRouter>, rootElement);
 
