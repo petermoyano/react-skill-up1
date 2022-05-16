@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import for MUI
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,12 +9,13 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import TextField from '@mui/material/TextField';
 
+
+import swal from "@sweetalert/with-react";
 //import custom css
 import '../css/Header.css';
 
@@ -24,6 +25,8 @@ const settings = ['My Profile', 'Logout'];
 const ResponsiveAppBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [search, setSearch] = React.useState(null);
+    const navigate = useNavigate();
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -39,6 +42,21 @@ const ResponsiveAppBar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    /**
+    * @param {Event} e
+    */
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (search.trim().length < 5) {
+            swal(<h2>Please enter at least 5 characters</h2>)
+
+        } else {
+            e.target.value = "";
+            navigate(`/search/${search}`)
+        }
+
+    }
 
     return (
         <AppBar position="static">
@@ -120,7 +138,7 @@ const ResponsiveAppBar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        My Crazy App
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
@@ -135,13 +153,23 @@ const ResponsiveAppBar = () => {
                             </Button>
                         ))}
                     </Box>
-
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
+                        <Box
+                            sx={{
+                                '& > :not(style)': { m: 1, height: '6ch' },
+                            }}
+                        >
+                            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                                <TextField
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    id="outlined-basic"
+                                    label="Search..."
+                                    variant="outlined"
+                                    color="warning" />
+                            </form>
+                        </Box>
+
+
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"

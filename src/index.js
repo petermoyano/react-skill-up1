@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Detalle from './components/Detalle';
 import ResponsiveAppBar from './components/Header';
 import { Container } from '@mui/material';
+import SearchResults from './components/SearchResults';
 
 const rootElement = document.getElementById("root");
 render(
@@ -20,6 +21,7 @@ render(
       <Route path="/" element={<App />} />
       <Route path="/listado" element={<Listado />} />
       <Route path="/detalle/:movieId" element={<Detalle />} />
+      <Route path="/search/:search" element={<SearchResults />} />
     </Routes>
     </Container>
     <Footer />
