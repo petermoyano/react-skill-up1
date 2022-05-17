@@ -5,21 +5,28 @@ import { API_KEY } from "../config";
 import MovieCard from "./MovieCard";
 import { Grid } from "@mui/material";
 import { v4 as uuidv4 } from 'uuid';
-import { Navigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
+import swal from "sweetalert";
 
 export default function SearchResults(){
     const [movieList, setMovieList] = useState([]);
     const search = useParams().search;
     const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${search}`
     const token = localStorage.getItem("Alkemytoken");
+    const navigate = useNavigate()
 
     useEffect(()=>{
         async function fetchSearch(){
-            const response = await axios.get(SEARCH_URL)
+            const response = await axios.get(SEARCH_URL);
             setMovieList(response.data.results);
+            if(response.data.results.length === 0){
+                swal("Your search didn't throw any results! Please try another keyword")
+                navigate("/");
+            }
         }
         fetchSearch();
-    }, [])
+
+    }, [navigate, SEARCH_URL])
     
     return <>
         {!token && <Navigate replace to="/" />}
