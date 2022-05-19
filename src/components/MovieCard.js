@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import "../css/MovieCard.css"
+import { FavsContext } from '../FavsContext'
 
 import { Link } from "react-router-dom";
 
@@ -16,7 +17,29 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CardActionArea from '@mui/material/CardActionArea';
 import Button from '@mui/material/Button';
 
+
 export default function MovieCard({ movie }) {
+    // fill Favs with the contents of localStorage.favs. If null then []
+    const { Favs, setFavs } = React.useContext(FavsContext)
+
+
+    const addOrRemoveFromFavs = (id, title) => {
+        if (Favs.some(fav => fav.id === id)) { //if condition is met then I want to remove a fav
+            const NewFavs = Favs.filter(fav => fav.id !== id);
+            setFavs(NewFavs);
+        }
+        else { //condition was not met so I want to add a Fav
+            setFavs(Favs => [...Favs, { title, id }]);
+        }
+
+    }
+    React.useEffect(() => {
+        console.log("Updating localStorage!");
+        localStorage.setItem('favs', JSON.stringify(Favs))
+        console.log("finished updating!")
+    }, [Favs])
+
+
 
     return (
         <Card sx={{ maxWidth: 345 }} className="MovieCard" variant="outlined">
@@ -41,7 +64,7 @@ export default function MovieCard({ movie }) {
                 </CardContent>
             </CardActionArea>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
+                <IconButton aria-label="add to favorites" onClick={() => addOrRemoveFromFavs(movie.id, movie.title)}>
                     <FavoriteIcon />
                 </IconButton>
                 <Button variant="outlined">More like this</Button>

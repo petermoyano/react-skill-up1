@@ -1,5 +1,6 @@
+import {createContext} from "react";
 
-
+const FavsContext = createContext();
 function numFormatter(num) {
     if(num > 999 && num < 1000000){
         return (num/1000).toFixed(1) + 'K'; // convert to K for number from > 1000 < 1 million 
@@ -10,4 +11,17 @@ function numFormatter(num) {
     }
 }
 
-export {numFormatter}
+const addOrRemoveFromFavs = (id) => {
+    console.log(id);
+  }
+const loadFavsIntoContext = () =>{
+    const favsInLocalStorage = localStorage.getItem('favs')
+    if(favsInLocalStorage){
+
+    }
+
+}
+
+
+export {numFormatter, addOrRemoveFromFavs, FavsContext }
+

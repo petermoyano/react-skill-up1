@@ -19,6 +19,9 @@ import swal from "@sweetalert/with-react";
 //import custom css
 import '../css/Header.css';
 
+import FavsSelect from './FavsSelect';
+import { FavsContext } from '../helpers';
+
 const pages = ['Listado', 'About'];
 const settings = ['My Profile', 'Logout'];
 
@@ -43,6 +46,7 @@ const ResponsiveAppBar = () => {
         setAnchorElUser(null);
     };
 
+
     /**
     * @param {Event} e
     */
@@ -59,6 +63,7 @@ const ResponsiveAppBar = () => {
     }
 
     return (
+        <FavsContext.Provider>
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
@@ -119,8 +124,11 @@ const ResponsiveAppBar = () => {
                                     </Typography>
                                 </MenuItem>
                             ))}
+
                         </Menu>
+
                     </Box>
+
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
@@ -152,6 +160,9 @@ const ResponsiveAppBar = () => {
                                 </Link>
                             </Button>
                         ))}
+                        <FavsSelect key="FavsSelect"
+                            onClick={handleCloseNavMenu}
+                            sx={{ my: 2, color: 'white', display: 'block', textAlign: 'center', alignItems: 'center' }} />
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Box
@@ -159,6 +170,7 @@ const ResponsiveAppBar = () => {
                                 '& > :not(style)': { m: 1, height: '6ch' },
                             }}
                         >
+
                             <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                                 <TextField
                                     onChange={(e) => setSearch(e.target.value)}
@@ -196,6 +208,7 @@ const ResponsiveAppBar = () => {
                 </Toolbar>
             </Container>
         </AppBar>
+        </FavsContext.Provider>
     );
 };
 export default ResponsiveAppBar;
