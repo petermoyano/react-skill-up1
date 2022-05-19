@@ -1,5 +1,5 @@
 // React and RR imports
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom"
 import { Grid } from "@material-ui/core";
 

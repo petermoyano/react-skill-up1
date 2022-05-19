@@ -20,7 +20,7 @@ import swal from "@sweetalert/with-react";
 import '../css/Header.css';
 
 import FavsSelect from './FavsSelect';
-import { FavsContext } from '../helpers';
+
 
 const pages = ['Listado', 'About'];
 const settings = ['My Profile', 'Logout'];
@@ -63,7 +63,7 @@ const ResponsiveAppBar = () => {
     }
 
     return (
-        <FavsContext.Provider>
+
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
@@ -208,7 +208,6 @@ const ResponsiveAppBar = () => {
                 </Toolbar>
             </Container>
         </AppBar>
-        </FavsContext.Provider>
     );
 };
 export default ResponsiveAppBar;

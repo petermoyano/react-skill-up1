@@ -3,10 +3,13 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+import { FavsContext } from '../FavsContext'
+
+
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [favs, setFavs] = React.useState(localStorage.getItem("favs"))
+  const { Favs } = React.useContext(FavsContext)
 
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -41,10 +44,7 @@ export default function BasicMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-          
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+          {Favs.length ? Favs.map(fav => {return <MenuItem onClick={handleClose}>{fav.title}</MenuItem>}) : "No favorites added yet!"}
       </Menu>
     </div>
   );

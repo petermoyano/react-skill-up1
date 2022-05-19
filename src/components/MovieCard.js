@@ -19,24 +19,24 @@ import Button from '@mui/material/Button';
 
 
 export default function MovieCard({ movie }) {
-    // fill Favs with the contents of localStorage.favs. If null then []
+    
     const { Favs, setFavs } = React.useContext(FavsContext)
 
-
     const addOrRemoveFromFavs = (id, title) => {
-        if (Favs.some(fav => fav.id === id)) { //if condition is met then I want to remove a fav
+        //Check if id is in Fav, if true, detele it, else add it
+        if (Favs.some(fav => fav.id === id)) { 
             const NewFavs = Favs.filter(fav => fav.id !== id);
             setFavs(NewFavs);
         }
-        else { //condition was not met so I want to add a Fav
+        else { 
             setFavs(Favs => [...Favs, { title, id }]);
         }
 
     }
+    
+    // Update localStorage when Favs state change
     React.useEffect(() => {
-        console.log("Updating localStorage!");
         localStorage.setItem('favs', JSON.stringify(Favs))
-        console.log("finished updating!")
     }, [Favs])
 
 
