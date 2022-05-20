@@ -1,3 +1,6 @@
+# About this project.
+This is a project intended to skill up in React, Material UI and React Router 6. The objective is to create a front end for most of the functionalities of the Movie Database API, but without a database for the App itself, so for example, user info is added in localStorage. Under construction!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
