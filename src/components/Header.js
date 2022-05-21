@@ -162,7 +162,7 @@ const ResponsiveAppBar = () => {
                         ))}
                         <FavsSelect key="FavsSelect"
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block', textAlign: 'center', alignItems: 'center' }} />
+                            sx={{ my: 2, color: 'white', display: 'block' }} />
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Box

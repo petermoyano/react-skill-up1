@@ -20,7 +20,7 @@ export default function BasicMenu() {
   };
 
   return (
-    <div>
+    <>
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -46,6 +46,6 @@ export default function BasicMenu() {
       >
           {Favs.length ? Favs.map(fav => {return <MenuItem onClick={handleClose}>{fav.title}</MenuItem>}) : "No favorites added yet!"}
       </Menu>
-    </div>
+    </>
   );
 }

@@ -1,0 +1,1 @@
+Favorites: Since this app was intended to work without a back end (other than the API to get the movies), the functionality for adding favorites was limited. One option was to save the movie info in localStorage but something about saving large images there wasn't right 
