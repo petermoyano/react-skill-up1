@@ -18,6 +18,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import Button from '@mui/material/Button';
 
 
+
 export default function MovieCard({ movie }) {
 
     const { Favs, setFavs } = React.useContext(FavsContext)
@@ -52,13 +53,13 @@ export default function MovieCard({ movie }) {
     }
 
     return (
-        <Card sx={{ maxWidth: 345 }} className="MovieCard" variant="outlined">
+        <Card sx={{ maxWidth: 450 }} className="MovieCard" variant="outlined">
             <CardActionArea>
                 <Link to={`/detalle/${movie.id}`}>
                     <CardHeader
-                        title={movie.title}
-                        subheader={`released on ${movie.release_date}`}
-                        sx={{ color: 'black' }}
+                        title={movie.title.slice(0, 25)}
+                        subheader={`${movie.release_date.slice(0, 4)}`}
+                        sx={{ color: 'black', maxHeight: 100, minHeight: 100 }}
                     />
                     <CardMedia
                         component="img"
@@ -67,7 +68,7 @@ export default function MovieCard({ movie }) {
                         alt={movie.title}
                     />
                 </Link>
-                <CardContent>
+                <CardContent sx={{ maxHeight: 160, overflow: "hidden" }}>
                     <Typography variant="body2" color="text.secondary">
                         {movie.overview}
                     </Typography>
