@@ -18,7 +18,7 @@ import { API_KEY } from "../config";
 const Listado = () => {
     const [movieList, setMovieList] = useState([])
     const token = localStorage.getItem("Alkemytoken")
-    
+
 
     useEffect(() => {
         const ENDPOINT = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
@@ -33,7 +33,7 @@ const Listado = () => {
         {!token && <Navigate replace to="/" />}
         <h2>List of most current movies</h2>
         <ul>
-            <Grid container spacing={4} justifyContent={'center'}>
+            <Grid container spacing={3} justifyContent={'center'}>
                 <>
                     {movieList.map((movie => {
                         return <>
