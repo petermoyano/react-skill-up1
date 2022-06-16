@@ -1,4 +1,18 @@
 a{
     text-decoration: none;
     color: white;
+    font-size: 1rem;
+}
+
+li a{
+    color: inherit
+}
+
+a.favs li{
+    color: black;
+    font-weight: 600;
+} 
+li button{
+    padding: 0;
+    background-color: red;
 }

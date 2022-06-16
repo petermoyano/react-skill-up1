@@ -10,7 +10,7 @@ function Footer() {
     return (<footer>
         <Box
             bgcolor={"text.primary"}
-            color="teal"
+            color='#823200'
             px={{ xs: 3, sm: 10 }}
             py={{ xs: 5, sm: 10 }}
         >

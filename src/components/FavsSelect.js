@@ -4,6 +4,8 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 import { FavsContext } from '../FavsContext'
+import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,13 +29,16 @@ export default function BasicMenu() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        sx={{color: 'inherit',
-        display: 'block',
-        alignItems: 'center',
-        textAlign: 'center'
-    }}
-      >
-        Favorites
+        sx={{
+          color: 'inherit',
+          display: 'block',
+          alignItems: 'center',
+          textAlign: 'center',
+          paddingLeft: 0
+        }}
+      ><Typography>
+          FAVORITES
+        </Typography>
       </Button>
       <Menu
         id="basic-menu"
@@ -44,7 +49,11 @@ export default function BasicMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-          {Favs.length ? Favs.map(fav => {return <MenuItem onClick={handleClose}>{fav.title}</MenuItem>}) : "No favorites added yet!"}
+        {Favs.length ? Favs.map(fav => {
+          return <Link to={`/detalle/${fav.id}`} className="favs">
+            <MenuItem onClick={handleClose}>{fav.title}</MenuItem>
+          </Link>
+        }) : "No favorites added yet!"}
       </Menu>
     </>
   );

@@ -11,8 +11,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import PreviewIcon from '@mui/icons-material/Preview';
 import TextField from '@mui/material/TextField';
+
 
 
 import swal from "@sweetalert/with-react";
@@ -20,12 +21,13 @@ import swal from "@sweetalert/with-react";
 import '../css/Header.css';
 
 import FavsSelect from './FavsSelect';
+import ThemeSwitch from './ThemeSwitch';
 
 
-const pages = ['Listado', 'About'];
+const pages = ['MOVIES', 'ABOUT'];
 const settings = ['My Profile', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [search, setSearch] = React.useState(null);
@@ -47,9 +49,6 @@ const ResponsiveAppBar = () => {
     };
 
 
-    /**
-    * @param {Event} e
-    */
     const handleSubmit = (e) => {
         e.preventDefault();
         if (search.trim().length < 5) {
@@ -67,7 +66,7 @@ const ResponsiveAppBar = () => {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <PreviewIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -75,15 +74,14 @@ const ResponsiveAppBar = () => {
                         href="/"
                         sx={{
                             mr: 2,
-                            display: { xs: 'none', md: 'flex' },
+                            display: { xs: 'none', lg: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
                             textDecoration: 'none',
                         }}
                     >
-                        My crazy app
+                        The boring App
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -113,23 +111,33 @@ const ResponsiveAppBar = () => {
                             onClose={handleCloseNavMenu}
                             sx={{
                                 display: { xs: 'block', md: 'none' },
+                                color: 'primary.main'
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">
-                                        <Link to={`/${page}`}>
+                                <MenuItem key={page} onClick={handleCloseNavMenu} >
+                                    <Link to={`/${page}`} >
+                                        <Typography textAlign="center">
                                             {page}
-                                        </Link>
-                                    </Typography>
-                                </MenuItem>
+                                        </Typography>
+                                    </Link>
+                                </MenuItem >
                             ))}
-
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <FavsSelect
+                                    key="FavsSelect"
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, display: 'block', }}
+                                />
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <ThemeSwitch themeMode={themeMode} SetThemeMode={SetThemeMode} />
+                            </MenuItem>
                         </Menu>
 
                     </Box>
 
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <PreviewIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -146,14 +154,14 @@ const ResponsiveAppBar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        My Crazy App
+                        The Boring app
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{ my: 2, display: 'block' }}
                             >
                                 <Link to={`/${page}`}>
                                     {page}
@@ -163,24 +171,26 @@ const ResponsiveAppBar = () => {
                         <FavsSelect key="FavsSelect"
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }} />
-                    </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Box
-                            sx={{
-                                '& > :not(style)': { m: 1, height: '6ch' },
-                            }}
-                        >
 
-                            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-                                <TextField
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    id="outlined-basic"
-                                    label="Search..."
-                                    variant="outlined"
-                                    color="warning" />
-                            </form>
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Box
+                                sx={{
+                                    '& > :not(style)': { m: 1, height: '6ch' },
+                                }}
+                            >
+                                <Box spacing={2} sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <ThemeSwitch themeMode={themeMode} SetThemeMode={SetThemeMode} />
+                                    <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                                        <TextField
+                                            onChange={(e) => setSearch(e.target.value)}
+                                            id="outlined-basic"
+                                            label="Search..."
+                                            variant="outlined"
+                                            color="warning" />
+                                    </form>
+                                </Box>
+                            </Box>
                         </Box>
-
 
                         <Menu
                             sx={{ mt: '45px' }}
@@ -207,7 +217,7 @@ const ResponsiveAppBar = () => {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 };
 export default ResponsiveAppBar;
