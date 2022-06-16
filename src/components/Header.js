@@ -15,17 +15,19 @@ import AdbIcon from '@mui/icons-material/Adb';
 import TextField from '@mui/material/TextField';
 
 
+
 import swal from "@sweetalert/with-react";
 //import custom css
 import '../css/Header.css';
 
 import FavsSelect from './FavsSelect';
+import ThemeSwitch from './ThemeSwitch';
 
 
 const pages = ['Listado', 'About'];
 const settings = ['My Profile', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [search, setSearch] = React.useState(null);
@@ -79,11 +81,10 @@ const ResponsiveAppBar = () => {
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
                             textDecoration: 'none',
                         }}
                     >
-                        My crazy app
+                        The boring App
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -170,15 +171,17 @@ const ResponsiveAppBar = () => {
                                 '& > :not(style)': { m: 1, height: '6ch' },
                             }}
                         >
-
-                            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-                                <TextField
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    id="outlined-basic"
-                                    label="Search..."
-                                    variant="outlined"
-                                    color="warning" />
-                            </form>
+                            <Box sx={{ display: 'flex' }}>
+                                <ThemeSwitch themeMode={themeMode} SetThemeMode={SetThemeMode} />
+                                <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                                    <TextField
+                                        onChange={(e) => setSearch(e.target.value)}
+                                        id="outlined-basic"
+                                        label="Search..."
+                                        variant="outlined"
+                                        color="warning" />
+                                </form>
+                            </Box>
                         </Box>
 
 
