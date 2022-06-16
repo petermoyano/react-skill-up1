@@ -22,10 +22,10 @@ function App() {
   const [themeMode, SetThemeMode] = React.useState("light")
   const theme = createTheme({
     palette: {
-      mode: themeMode
-      /* primary: {
-        main: '#110B11'
-      } */
+      mode: themeMode,
+      primary: {
+        main: '#823200'
+      }
     }
   })
 

@@ -59,7 +59,7 @@ export default function MovieCard({ movie }) {
                     <CardHeader
                         title={movie.title.slice(0, 25)}
                         subheader={`${movie.release_date.slice(0, 4)}`}
-                        sx={{ color: 'black', maxHeight: 100, minHeight: 100 }}
+                        sx={{ color: '#823200', maxHeight: 100, minHeight: 100 }}
                     />
                     <CardMedia
                         component="img"

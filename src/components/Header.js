@@ -171,7 +171,7 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                                 '& > :not(style)': { m: 1, height: '6ch' },
                             }}
                         >
-                            <Box sx={{ display: 'flex' }}>
+                            <Box spacing={2} sx={{ display: 'flex', alignItems: 'center' }}>
                                 <ThemeSwitch themeMode={themeMode} SetThemeMode={SetThemeMode} />
                                 <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                                     <TextField
