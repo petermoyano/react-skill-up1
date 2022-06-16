@@ -1,4 +1,12 @@
 a{
     text-decoration: none;
-    color: white;
+    color: white
+}
+
+li a{
+    color: inherit
+}
+li button{
+    padding: 0;
+    background-color: red;
 }

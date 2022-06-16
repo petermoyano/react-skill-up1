@@ -9,7 +9,7 @@ export default function ThemeSwitch({ themeMode, SetThemeMode }) {
     }
     return (
         <FormGroup >
-            <FormControlLabel control={<Switch onClick={toggleThemeMode} />} label={`${themeMode} side`} />
+            <FormControlLabel control={<Switch onClick={toggleThemeMode} />} label={`${themeMode.toUpperCase()}`} />
         </FormGroup>
     );
 }

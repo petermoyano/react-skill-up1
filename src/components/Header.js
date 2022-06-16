@@ -24,7 +24,7 @@ import FavsSelect from './FavsSelect';
 import ThemeSwitch from './ThemeSwitch';
 
 
-const pages = ['Listado', 'About'];
+const pages = ['MOVIES', 'ABOUT'];
 const settings = ['My Profile', 'Logout'];
 
 const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
@@ -110,23 +110,24 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                             sx={{
-                                display: { xs: 'block', md: 'none', color: 'black' },
+                                display: { xs: 'block', md: 'none' },
+                                color: 'primary.main',
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center" color='black'>
-                                        <Link to={`/${page}`}>
+                                <MenuItem key={page} onClick={handleCloseNavMenu} >
+                                    <Link to={`/${page}`} >
+                                        <Typography textAlign="center" >
                                             {page}
-                                        </Link>
-                                    </Typography>
+                                        </Typography>
+                                    </Link>
                                 </MenuItem >
                             ))}
                             <MenuItem onClick={handleCloseNavMenu}>
                                 <FavsSelect
                                     key="FavsSelect"
                                     onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                    sx={{ my: 2, display: 'block', }}
                                 />
                             </MenuItem>
                             <MenuItem onClick={handleCloseNavMenu}>
@@ -160,7 +161,7 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{ my: 2, display: 'block' }}
                             >
                                 <Link to={`/${page}`}>
                                     {page}
@@ -216,7 +217,7 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 };
 export default ResponsiveAppBar;
