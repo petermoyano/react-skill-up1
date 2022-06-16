@@ -111,13 +111,13 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                             onClose={handleCloseNavMenu}
                             sx={{
                                 display: { xs: 'block', md: 'none' },
-                                color: 'primary.main',
+                                color: 'primary.main'
                             }}
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu} >
                                     <Link to={`/${page}`} >
-                                        <Typography textAlign="center" >
+                                        <Typography textAlign="center">
                                             {page}
                                         </Typography>
                                     </Link>

@@ -37,7 +37,7 @@ function App() {
           <Container>
             <Routes>
               <Route path="/" element={<Login />} />
-              <Route path="/listado" element={<Listado />} />
+              <Route path="/movies" element={<Listado />} />
               <Route path="/detalle/:movieId" element={<Detalle />} />
               <Route path="/search/:search" element={<SearchResults />} />
             </Routes>
