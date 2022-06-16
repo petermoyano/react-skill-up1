@@ -16,6 +16,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CardActionArea from '@mui/material/CardActionArea';
 import Button from '@mui/material/Button';
+import { Box } from '@mui/material';
 
 
 
@@ -47,7 +48,7 @@ export default function MovieCard({ movie }) {
             })
         }
         if (movieInFav()) {
-            return <FavoriteIcon color='warning' />
+            return <FavoriteIcon color='primary' />
         }
         return <FavoriteIcon />
     }
@@ -75,10 +76,14 @@ export default function MovieCard({ movie }) {
                 </CardContent>
             </CardActionArea>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites" onClick={() => addOrRemoveFromFavs(movie.id, movie.title)}>
-                    {favIcon()}
-                </IconButton>
-                <Button variant="outlined">More like this</Button>
+                <Box >
+                    <IconButton aria-label="add to favorites" onClick={() => addOrRemoveFromFavs(movie.id, movie.title)}>
+                        {favIcon()}
+                    </IconButton>
+                    <Link to={`/detalle/${movie.id}`}>
+                        <Button>More info</Button>
+                    </Link>
+                </Box>
             </CardActions>
         </Card>
     );

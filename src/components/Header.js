@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import PreviewIcon from '@mui/icons-material/Preview';
 import TextField from '@mui/material/TextField';
 
 
@@ -49,9 +49,6 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
     };
 
 
-    /**
-    * @param {Event} e
-    */
     const handleSubmit = (e) => {
         e.preventDefault();
         if (search.trim().length < 5) {
@@ -69,7 +66,7 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <PreviewIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
@@ -77,7 +74,7 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                         href="/"
                         sx={{
                             mr: 2,
-                            display: { xs: 'none', md: 'flex' },
+                            display: { xs: 'none', lg: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
@@ -113,24 +110,33 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                             sx={{
-                                display: { xs: 'block', md: 'none' },
+                                display: { xs: 'block', md: 'none', color: 'black' },
                             }}
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">
+                                    <Typography textAlign="center" color='black'>
                                         <Link to={`/${page}`}>
                                             {page}
                                         </Link>
                                     </Typography>
-                                </MenuItem>
+                                </MenuItem >
                             ))}
-
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <FavsSelect
+                                    key="FavsSelect"
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                />
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <ThemeSwitch themeMode={themeMode} SetThemeMode={SetThemeMode} />
+                            </MenuItem>
                         </Menu>
 
                     </Box>
 
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <PreviewIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -147,7 +153,7 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                             textDecoration: 'none',
                         }}
                     >
-                        My Crazy App
+                        The Boring app
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
@@ -164,26 +170,26 @@ const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {
                         <FavsSelect key="FavsSelect"
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }} />
-                    </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Box
-                            sx={{
-                                '& > :not(style)': { m: 1, height: '6ch' },
-                            }}
-                        >
-                            <Box spacing={2} sx={{ display: 'flex', alignItems: 'center' }}>
-                                <ThemeSwitch themeMode={themeMode} SetThemeMode={SetThemeMode} />
-                                <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-                                    <TextField
-                                        onChange={(e) => setSearch(e.target.value)}
-                                        id="outlined-basic"
-                                        label="Search..."
-                                        variant="outlined"
-                                        color="warning" />
-                                </form>
+
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Box
+                                sx={{
+                                    '& > :not(style)': { m: 1, height: '6ch' },
+                                }}
+                            >
+                                <Box spacing={2} sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <ThemeSwitch themeMode={themeMode} SetThemeMode={SetThemeMode} />
+                                    <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                                        <TextField
+                                            onChange={(e) => setSearch(e.target.value)}
+                                            id="outlined-basic"
+                                            label="Search..."
+                                            variant="outlined"
+                                            color="warning" />
+                                    </form>
+                                </Box>
                             </Box>
                         </Box>
-
 
                         <Menu
                             sx={{ mt: '45px' }}
