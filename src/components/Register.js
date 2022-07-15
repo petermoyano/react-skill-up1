@@ -20,10 +20,10 @@ import { useTransition } from 'react';
 
 const theme = createTheme();
 
-export default function SignIn() {
+export default function Register() {
     const [formData, setFormData] = React.useState(null);
     const navigate = useNavigate();
-    const BE_URL = 'https://boringappbe.herokuapp.com/';
+    const BE_URL = 'https://boringappbe.herokuapp.com/auth/register';
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -31,23 +31,18 @@ export default function SignIn() {
     }
     const submitHandler = e => {
         e.preventDefault();
-        const { username, password } = formData;
-
-        if (username === "" || password === "") {
-            swal(
-                <h2>Los campos no pueden estar vacios</h2>
-            );
-            return;
-        }
+        console.log(formData)
         axios
             .post(BE_URL, formData)
             .then(res => {
                 console.log(res.data);
                 localStorage.setItem('token', res.data.token);
+                swal("You are now registered!")
                 navigate("/listado");
             })
             .catch(err => {
-                swal("Sorry, wrong credentials")
+                swal("Try again")
+                console.log(formData)
                 console.log(err)
             });
     }
@@ -101,7 +96,7 @@ export default function SignIn() {
                             margin="normal"
                             required
                             fullWidth
-                            name="firstname"
+                            name="firstName"
                             label="firstname"
                             type="firstname"
                             id="firstname"
@@ -112,7 +107,7 @@ export default function SignIn() {
                             margin="normal"
                             required
                             fullWidth
-                            name="lastname"
+                            name="lastName"
                             label="lastname"
                             type="lastname"
                             id="lastname"

@@ -23,7 +23,7 @@ const theme = createTheme();
 export default function SignIn() {
     const [formData, setFormData] = React.useState(null);
     const navigate = useNavigate();
-    const BE_URL = 'https://boringappbe.herokuapp.com/';
+    const BE_URL = 'https://boringappbe.herokuapp.com/auth/token';
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -43,11 +43,13 @@ export default function SignIn() {
             .post(BE_URL, formData)
             .then(res => {
                 console.log(res.data);
+                console.log(formData)
                 localStorage.setItem('token', res.data.token);
                 navigate("/listado");
             })
             .catch(err => {
                 swal("Sorry, wrong credentials")
+                console.log(formData, BE_URL)
                 console.log(err)
             });
     }

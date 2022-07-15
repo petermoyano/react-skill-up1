@@ -21,7 +21,7 @@ function Footer() {
                             Go to
                         </Box>
                         <Box sx={{ p: 1 }}>
-                            <Link to="/contact" color="inherit">
+                            <Link to="/About" color="inherit">
                                 About
                             </Link>
                         </Box>
@@ -51,7 +51,7 @@ function Footer() {
                             Contact
                         </Box>
                         <Grid container justifyContent={"space-evenly"} sx={{ py: 2 }}>
-                            <Link to="/" color="inherit" >
+                            <Link to="https://github.com/petermoyano" color="inherit" >
                                 <GitHubIcon />
                             </Link>
                             <Link to="/" color="inherit">
