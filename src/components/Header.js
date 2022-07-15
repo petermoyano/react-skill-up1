@@ -24,7 +24,7 @@ import FavsSelect from './FavsSelect';
 import ThemeSwitch from './ThemeSwitch';
 
 
-const pages = ['MOVIES', 'ABOUT'];
+const pages = ['MOVIES'];
 const settings = ['My Profile', 'Logout'];
 
 const ResponsiveAppBar = ({ themeMode, SetThemeMode }) => {

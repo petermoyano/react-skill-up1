@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Navigate} from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import axios from 'axios';
 import swal from "@sweetalert/with-react";
-import {API_KEY} from "../config"
+import { API_KEY } from "../config"
 
 import DetailMovieCard from "./DetailMovieCard";
 
@@ -21,17 +21,17 @@ function Detalle() {
                     setMovieData(res.data)
                     console.log(res.data)
                 })
-                .catch(e => 
+                .catch(e =>
                     swal(<h2>Oops... It seams something went wrong. Please try again later.</h2>));
 
-                    
-            }
-            fetchMovieData(DETALLE_URL);
-        }, [DETALLE_URL])
+
+        }
+        fetchMovieData(DETALLE_URL);
+    }, [DETALLE_URL])
 
     return <>
-        {!token && <Navigate replace to="/"/>}
-        {movieData ? <DetailMovieCard movieData={movieData}/> : "Loading........."}
+
+        {movieData ? <DetailMovieCard movieData={movieData} /> : "Loading........."}
     </>
 }
 

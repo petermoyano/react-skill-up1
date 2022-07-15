@@ -38,7 +38,8 @@ export default function Register() {
                 console.log(res.data);
                 localStorage.setItem('token', res.data.token);
                 swal("You are now registered!")
-                navigate("/listado");
+                navigate("/movies");
+                return <Navigate to="/movies" />
             })
             .catch(err => {
                 swal("Try again")
@@ -51,7 +52,7 @@ export default function Register() {
 
     return (
         <ThemeProvider theme={theme}>
-            {token && <Navigate to="/listado" />}
+            {token && <Navigate to="/movies" />}
             <Container component="main" maxWidth="xs" marginBottom={4}>
                 <CssBaseline />
                 <Box

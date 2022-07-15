@@ -1,5 +1,6 @@
 import SignIn from './components/SignIn';
 import Register from './components/Register';
+import LogOut from './components/LogOut';
 import './App.css';
 import React from 'react';
 import './index.css';
@@ -39,6 +40,7 @@ function App() {
             <Routes>
               <Route path="/signin" element={<SignIn />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/logout" element={<LogOut />} />
               <Route path="/movies" element={<Listado />} />
               <Route path="/detalle/:movieId" element={<Detalle />} />
               <Route path="/search/:search" element={<SearchResults />} />

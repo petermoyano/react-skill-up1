@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Button, Container, Grid } from "@mui/material";
 import { Link } from "react-router-dom"
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -43,6 +43,11 @@ function Footer() {
                         <Box sx={{ p: 1 }}>
                             <Link to="/register" color="inherit">
                                 Register
+                            </Link>
+                        </Box>
+                        <Box sx={{ p: 1 }}>
+                            <Link to="/logout" color="inherit">
+                                Logout
                             </Link>
                         </Box>
                     </Grid>

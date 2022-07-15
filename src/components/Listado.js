@@ -30,7 +30,6 @@ const Listado = () => {
     }, [setMovieList])
 
     return <>
-        {!token && <Navigate replace to="/" />}
         <h2>List of most current movies</h2>
         <ul>
             <Grid container spacing={3} justifyContent={'center'}>

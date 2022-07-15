@@ -27,7 +27,7 @@ function DetailMovieCard({ movieData: { backdrop_path,
     <Typography variant="h3" gutterBottom>
       {tagline}
     </Typography>
-    <Box 
+    <Box
       sx={{
         display: 'flex',
         '& > :not(style)': {
@@ -36,7 +36,7 @@ function DetailMovieCard({ movieData: { backdrop_path,
           height: 400,
         },
       }}
-    gutterBottom>
+      gutterBottom>
       <img src={`${BASE_URL}w500${backdrop_path}`} alt={title} />
       <img src={`${BASE_URL}w500${poster_path}`} alt={title} />
 

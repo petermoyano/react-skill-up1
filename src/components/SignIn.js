@@ -45,7 +45,7 @@ export default function SignIn() {
                 console.log(res.data);
                 console.log(formData)
                 localStorage.setItem('token', res.data.token);
-                navigate("/listado");
+                navigate("/movies");
             })
             .catch(err => {
                 swal("Sorry, wrong credentials")
@@ -58,7 +58,7 @@ export default function SignIn() {
 
     return (
         <ThemeProvider theme={theme}>
-            {token && <Navigate to="/listado" />}
+            {token && <Navigate to="/movies" />}
             <Container component="main" maxWidth="xs" marginBottom={4}>
                 <CssBaseline />
                 <Box
