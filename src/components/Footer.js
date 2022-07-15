@@ -36,12 +36,12 @@ function Footer() {
                             Account
                         </Box>
                         <Box sx={{ p: 1 }}>
-                            <Link to="/" color="inherit">
+                            <Link to="/signin" color="inherit">
                                 Login
                             </Link>
                         </Box>
                         <Box sx={{ p: 1 }}>
-                            <Link to="/" color="inherit">
+                            <Link to="/register" color="inherit">
                                 Register
                             </Link>
                         </Box>

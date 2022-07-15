@@ -4,7 +4,7 @@ import swal from "@sweetalert/with-react";
 import { useNavigate, Navigate } from "react-router-dom"
 function Login() {
     const navigate = useNavigate();
-    const ALKEMY_URL = 'http://challenge-react.alkemy.org';
+    const BE_URL = 'https://boringappbe.herokuapp.com/';
     const submitHandler = e => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -17,7 +17,7 @@ function Login() {
             return;
         }
         axios
-            .post(ALKEMY_URL, { email, password })
+            .post(BE_URL, { email, password })
             .then(res => {
                 console.log(res.data);
                 localStorage.setItem('Alkemytoken', res.data.token);
